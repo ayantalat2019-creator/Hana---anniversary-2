@@ -1,845 +1,1371 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>For Hana ♡</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family: Georgia, "Times New Roman", serif;
-    background: #fff7fa;
-    color: #4b2635;
-    overflow-x: hidden;
+body{
+    font-family:Georgia,"Times New Roman",serif;
+    background:#fff7fa;
+    color:#4b2635;
+    overflow-x:hidden;
+    min-height:100vh;
 }
 
-/* ---------- FLOATING PARTICLES ---------- */
+/* =========================
+   FLOATING HEARTS
+========================= */
 
-.particle {
-    position: fixed;
-    bottom: -40px;
-    pointer-events: none;
-    animation: floatUp linear forwards;
-    z-index: 20;
-    opacity: 0.8;
+.particle{
+    position:fixed;
+    bottom:-50px;
+    pointer-events:none;
+    z-index:1;
+    opacity:0;
+    animation:floatUp linear forwards;
 }
 
-@keyframes floatUp {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
+@keyframes floatUp{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
     }
 
-    15% {
-        opacity: 0.9;
+    15%{
+        opacity:.55;
     }
 
-    100% {
-        transform: translateY(-110vh) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-/* ---------- OPENING ---------- */
-
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 30px;
-    position: relative;
-    overflow: hidden;
-
-    background:
-        radial-gradient(circle at 20% 20%, #ffe3ed 0%, transparent 28%),
-        radial-gradient(circle at 80% 70%, #ffd8e7 0%, transparent 30%),
-        linear-gradient(145deg, #fff9fb, #ffeef4);
-}
-
-.hero-content {
-    position: relative;
-    z-index: 3;
-    max-width: 700px;
-}
-
-.small-line {
-    font-size: 14px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: #a66b7f;
-    margin-bottom: 25px;
-}
-
-.hero h1 {
-    font-size: clamp(42px, 11vw, 85px);
-    font-weight: normal;
-    margin-bottom: 15px;
-    color: #542637;
-}
-
-.hero h1 span {
-    color: #c45b7b;
-}
-
-.subtitle {
-    font-size: 17px;
-    line-height: 1.7;
-    color: #805467;
-    margin-bottom: 50px;
-}
-
-.tease {
-    font-size: 15px;
-    font-style: italic;
-    margin-bottom: 18px;
-    color: #9a6275;
-}
-
-.magic-button {
-    border: 1px solid #d889a2;
-    background: rgba(255,255,255,0.7);
-    color: #75364d;
-    padding: 16px 27px;
-    border-radius: 50px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 8px 30px rgba(150,70,100,0.12);
-}
-
-.magic-button:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 12px 35px rgba(150,70,100,0.2);
-}
-
-.magic-button:active {
-    transform: scale(0.94);
-}
-
-#firstMessage {
-    margin-top: 22px;
-    min-height: 25px;
-    color: #a24d6b;
-    font-style: italic;
-}
-
-/* ---------- KISS SURPRISE ---------- */
-
-#kissScreen {
-    position: fixed;
-    inset: 0;
-    background: rgba(255, 236, 244, 0.97);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-}
-
-.kiss {
-    font-size: 100px;
-    animation: kissPop 2.2s ease forwards;
-}
-
-@keyframes kissPop {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-    }
-
-    25% {
-        transform: scale(1.5);
-        opacity: 1;
-    }
-
-    45% {
-        transform: scale(0.85);
-    }
-
-    65% {
-        transform: scale(1.15);
-    }
-
-    100% {
-        transform: scale(1);
+    100%{
+        transform:translateY(-115vh) rotate(180deg);
+        opacity:0;
     }
 }
 
-/* ---------- SECTIONS ---------- */
+/* =========================
+   MAIN PAGE
+========================= */
 
-section.story {
-    min-height: 100vh;
-    padding: 100px 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.page{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px 18px;
+    position:relative;
+    z-index:2;
 }
 
-.story-inner {
-    max-width: 800px;
-    width: 100%;
+.card{
+    width:100%;
+    max-width:780px;
+    background:rgba(255,255,255,.72);
+    border:1px solid rgba(216,137,162,.28);
+    border-radius:32px;
+    padding:45px 30px;
+    text-align:center;
+    box-shadow:
+        0 25px 80px rgba(110,50,75,.10),
+        inset 0 1px 0 rgba(255,255,255,.8);
+    backdrop-filter:blur(8px);
+    animation:cardIn .8s ease;
 }
 
-.eyebrow {
-    color: #bd6683;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-size: 12px;
-    margin-bottom: 15px;
-}
-
-.story h2 {
-    font-size: clamp(35px, 8vw, 58px);
-    font-weight: normal;
-    margin-bottom: 30px;
-    color: #592b3e;
-}
-
-.story p {
-    font-size: 18px;
-    line-height: 2;
-    color: #704657;
-    margin-bottom: 22px;
-}
-
-.soft-card {
-    background: rgba(255,255,255,0.72);
-    border: 1px solid #f1ccd8;
-    border-radius: 28px;
-    padding: 35px;
-    margin-top: 35px;
-    box-shadow: 0 20px 60px rgba(110,50,75,0.08);
-}
-
-.center {
-    text-align: center;
-}
-
-/* ---------- LITTLE PUZZLE ---------- */
-
-.puzzle {
-    margin-top: 40px;
-    text-align: center;
-}
-
-.puzzle button {
-    border: none;
-    background: #f3c4d3;
-    color: #633144;
-    padding: 14px 22px;
-    border-radius: 30px;
-    cursor: pointer;
-    margin: 8px;
-    transition: 0.25s;
-}
-
-.puzzle button:hover {
-    transform: rotate(-2deg) scale(1.05);
-}
-
-#secretText {
-    margin-top: 20px;
-    min-height: 40px;
-    color: #a04c6b;
-}
-
-/* ---------- LOVE NOTES ---------- */
-
-.note-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 18px;
-    margin-top: 35px;
-}
-
-.note {
-    padding: 25px;
-    min-height: 150px;
-    border-radius: 22px;
-    background: #fff;
-    border: 1px solid #f3d5df;
-    transition: 0.3s;
-}
-
-.note:hover {
-    transform: translateY(-6px) rotate(1deg);
-}
-
-.note h3 {
-    margin-bottom: 12px;
-    color: #a44d69;
-}
-
-.note p {
-    font-size: 15px;
-    line-height: 1.7;
-}
-
-/* ---------- FINAL ---------- */
-
-.final {
-    min-height: 100vh;
-    background:
-        radial-gradient(circle at 50% 30%, #ffdce8, transparent 35%),
-        #fff5f9;
-    text-align: center;
-}
-
-.final h2 {
-    font-size: clamp(42px, 10vw, 75px);
-    font-weight: normal;
-    margin-bottom: 30px;
-}
-
-.final p {
-    max-width: 650px;
-    margin: 0 auto 20px;
-}
-
-.signature {
-    margin-top: 55px;
-    font-size: 22px;
-    color: #9b4c68;
-}
-
-/* ---------- SECRET BUTTON ---------- */
-
-.secret-button {
-    position: fixed;
-    right: 18px;
-    bottom: 18px;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(255,255,255,0.35);
-    color: #d8a0b2;
-    cursor: pointer;
-    z-index: 50;
-    opacity: 0.35;
-}
-
-.secret-button:hover {
-    opacity: 1;
-}
-
-/* ---------- REVEAL ---------- */
-
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: 1s ease;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ---------- MOBILE ---------- */
-
-@media (max-width: 600px) {
-
-    .story p {
-        font-size: 16px;
+@keyframes cardIn{
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.98);
     }
 
-    .soft-card {
-        padding: 25px;
-    }
-
-    .hero h1 {
-        line-height: 1.05;
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
     }
 }
+
+.eyebrow{
+    font-size:12px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:#bd6683;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:clamp(42px,10vw,78px);
+    font-weight:normal;
+    line-height:1.05;
+    color:#542637;
+    margin-bottom:25px;
+}
+
+h1 span{
+    color:#c45b7b;
+}
+
+h2{
+    font-size:clamp(30px,7vw,50px);
+    font-weight:normal;
+    color:#542637;
+    margin-bottom:25px;
+}
+
+p{
+    color:#704657;
+    font-size:17px;
+    line-height:1.9;
+    margin-bottom:20px;
+}
+
+.small{
+    font-size:14px;
+    color:#9a6275;
+}
+
+.italic{
+    font-style:italic;
+}
+
+.divider{
+    width:60px;
+    height:1px;
+    background:#d889a2;
+    margin:28px auto;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons{
+    margin-top:32px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+button{
+    font-family:Georgia,"Times New Roman",serif;
+    border:1px solid #d889a2;
+    background:rgba(255,255,255,.85);
+    color:#75364d;
+    padding:15px 24px;
+    border-radius:50px;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s ease;
+    box-shadow:0 8px 25px rgba(150,70,100,.08);
+}
+
+button:hover{
+    transform:translateY(-4px) scale(1.02);
+    box-shadow:0 12px 30px rgba(150,70,100,.14);
+}
+
+button:active{
+    transform:scale(.96);
+}
+
+.primary{
+    background:#75364d;
+    color:white;
+    border-color:#75364d;
+}
+
+/* =========================
+   ANSWERS
+========================= */
+
+.answer{
+    min-height:35px;
+    margin-top:22px;
+    color:#a24d6b;
+    font-style:italic;
+    line-height:1.7;
+}
+
+/* =========================
+   LITTLE THINGS
+========================= */
+
+.little-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin:30px 0;
+}
+
+.little-box{
+    background:rgba(255,255,255,.8);
+    border:1px solid #f1ccd8;
+    border-radius:22px;
+    padding:23px 17px;
+    transition:.3s;
+}
+
+.little-box:hover{
+    transform:translateY(-5px);
+}
+
+.little-box .emoji{
+    font-size:27px;
+    margin-bottom:10px;
+}
+
+.little-box h3{
+    font-size:17px;
+    font-weight:normal;
+    color:#8f4862;
+    margin-bottom:8px;
+}
+
+.little-box p{
+    font-size:14px;
+    line-height:1.65;
+    margin:0;
+}
+
+/* =========================
+   SECRET NOTE
+========================= */
+
+.secret{
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transition:.8s ease;
+}
+
+.secret.show{
+    max-height:500px;
+    opacity:1;
+    margin-top:25px;
+}
+
+.secret-inner{
+    background:#fff5f8;
+    border:1px dashed #d889a2;
+    border-radius:22px;
+    padding:25px;
+}
+
+/* =========================
+   KISS SCREEN
+========================= */
+
+.kiss-screen{
+    position:fixed;
+    inset:0;
+    background:rgba(255,235,243,.97);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    opacity:0;
+    pointer-events:none;
+}
+
+.kiss-screen.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.kiss{
+    font-size:100px;
+    animation:none;
+}
+
+.kiss-screen.show .kiss{
+    animation:kissPop 1.5s cubic-bezier(.17,.67,.25,1.4) forwards;
+}
+
+@keyframes kissPop{
+
+    0%{
+        transform:scale(.1) rotate(-20deg);
+        opacity:0;
+    }
+
+    35%{
+        transform:scale(1.5) rotate(10deg);
+        opacity:1;
+    }
+
+    60%{
+        transform:scale(.9) rotate(-5deg);
+    }
+
+    80%{
+        transform:scale(1.2);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+/* =========================
+   HEART BURST
+========================= */
+
+.burst{
+    position:fixed;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+    z-index:10000;
+    font-size:25px;
+    animation:burst 1.4s ease-out forwards;
+}
+
+@keyframes burst{
+    0%{
+        transform:translate(-50%,-50%) scale(.2);
+        opacity:1;
+    }
+
+    100%{
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(1.5);
+        opacity:0;
+    }
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final-heart{
+    font-size:65px;
+    margin-bottom:20px;
+    animation:heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.15);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .card{
+        padding:38px 20px;
+        border-radius:27px;
+    }
+
+    p{
+        font-size:16px;
+        line-height:1.85;
+    }
+
+    .little-grid{
+        grid-template-columns:1fr;
+    }
+
+    button{
+        width:100%;
+        max-width:310px;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- ================= OPENING ================= -->
+<!-- FLOATING PARTICLES -->
+<div id="particles"></div>
 
-<section class="hero" id="home">
-
-    <div class="hero-content">
-
-        <div class="small-line">
-            A little something for someone special
-        </div>
-
-        <h1>
-            To Miss <span>Hana Ahmed</span>
-        </h1>
-
-        <p class="subtitle">
-            There is absolutely nothing suspicious about this page.
-            <br>
-            Probably.
-        </p>
-
-        <p class="tease">
-            I wonder what this button does...
-            <br>
-            Hmm. If it was me, I would have definitely pressed it.
-        </p>
-
-        <button class="magic-button" onclick="magicClick()">
-            Press me ♡
-        </button>
-
-        <div id="firstMessage"></div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= KISS SCREEN ================= -->
-
-<div id="kissScreen">
+<!-- KISS ANIMATION -->
+<div class="kiss-screen" id="kissScreen">
     <div class="kiss">💋</div>
 </div>
 
-
-<!-- ================= STORY 1 ================= -->
-
-<section class="story">
-
-    <div class="story-inner reveal">
-
-        <div class="eyebrow">Okay... you found it.</div>
-
-        <h2>Now that I have your attention...</h2>
-
-        <p>
-            I could have just written you a normal anniversary message.
-        </p>
-
-        <p>
-            But where is the fun in that?
-        </p>
-
-        <div class="soft-card">
-
-            <p>
-                So instead, I made you something you have to
-                actually explore.
-            </p>
-
-            <p>
-                There are little things hidden around here.
-                Some obvious. Some not so obvious.
-            </p>
-
-            <p>
-                And yes... I fully expect you to click things
-                you probably shouldn't click.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= ABOUT HER ================= -->
-
-<section class="story">
-
-    <div class="story-inner reveal">
-
-        <div class="eyebrow">Things I notice about you</div>
-
-        <h2>It's the little things.</h2>
-
-        <p>
-            It's funny how someone can slowly become such a big
-            part of your everyday life without you even realizing
-            how much space they have taken up.
-        </p>
-
-        <p>
-            The conversations. The random moments.
-            The silly things that somehow become our things.
-            The little habits that make me smile.
-        </p>
-
-        <div class="note-grid">
-
-            <div class="note">
-                <h3>01 — Your little things</h3>
-                <p>
-                    The things you probably don't even realize
-                    I notice.
-                </p>
-            </div>
-
-            <div class="note">
-                <h3>02 — Our conversations</h3>
-                <p>
-                    Somehow even the most random conversations
-                    become something I look forward to.
-                </p>
-            </div>
-
-            <div class="note">
-                <h3>03 — Kissi</h3>
-                <p>
-                    Yes. This gets its own section.
-                    I love asking you for kissi.
-                </p>
-            </div>
-
-            <div class="note">
-                <h3>04 — You</h3>
-                <p>
-                    Honestly, this entire website could have just
-                    been this one word.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= PUZZLE ================= -->
-
-<section class="story">
-
-    <div class="story-inner reveal">
-
-        <div class="eyebrow">A very important investigation</div>
-
-        <h2>Choose wisely.</h2>
-
-        <p class="center">
-            One of these buttons contains a secret.
-            <br>
-            The others are completely useless.
-        </p>
-
-        <div class="puzzle">
-
-            <button onclick="wrongButton()">
-                Definitely this one
-            </button>
-
-            <button onclick="wrongButton()">
-                No, this one
-            </button>
-
-            <button onclick="secretButton()">
-                Don't press me
-            </button>
-
-            <button onclick="wrongButton()">
-                I have no idea
-            </button>
-
-            <div id="secretText"></div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= ANNIVERSARY ================= -->
-
-<section class="story">
-
-    <div class="story-inner reveal">
-
-        <div class="eyebrow">And now, seriously...</div>
-
-        <h2>Happy Anniversary, Hana.</h2>
-
-        <div class="soft-card">
-
-            <p>
-                I don't have a hundred pictures to put here.
-                I don't have a giant collection of memories
-                saved in an album.
-            </p>
-
-            <p>
-                But maybe that's okay.
-            </p>
-
-            <p>
-                Because what matters to me isn't a folder full
-                of pictures. It's everything that exists between
-                those moments.
-            </p>
-
-            <p>
-                The conversations we had.
-                The things we laughed about.
-                The things we learned about each other.
-                The little routines that became ours.
-            </p>
-
-            <p>
-                And all the moments that haven't happened yet.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= FINAL ================= -->
-
-<section class="story final">
-
-    <div class="story-inner reveal">
-
-        <div class="eyebrow">One last thing</div>
-
-        <h2>There is no ending here.</h2>
-
-        <p>
-            Because this isn't supposed to be the end of a story.
-        </p>
-
-        <p>
-            It's just one little page for one little anniversary
-            in something I hope gets to have many more chapters.
-        </p>
-
-        <p>
-            So thank you for being you.
-        </p>
-
-        <p>
-            And yes...
-            you can have your kissi now. 💋
-        </p>
-
-        <div class="signature">
-            Made with love,  
-            <br>
-            Ayan ♡
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- SECRET LITTLE BUTTON -->
-
-<button class="secret-button" onclick="tinySecret()">
-    ♡
-</button>
+<!-- EVERYTHING IS RENDERED HERE -->
+<div id="app"></div>
 
 
 <script>
 
-/* ==========================================
-   OPENING BUTTON
-========================================== */
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
 
-let clicks = 0;
+const symbols = ["♡","♥","✿","♡","♥"];
 
-function magicClick() {
-
-    clicks++;
-
-    const message = document.getElementById("firstMessage");
-
-    if (clicks === 1) {
-
-        message.innerHTML =
-            "Hmm... maybe you should press it again.";
-
-        createParticles();
-
-    } 
-    
-    else if (clicks === 2) {
-
-        message.innerHTML = "";
-
-        document.getElementById("kissScreen").style.display = "flex";
-
-        createManyParticles();
-
-        setTimeout(() => {
-
-            document.getElementById("kissScreen").style.display = "none";
-
-            document.querySelectorAll(".reveal")[0]
-                .classList.add("visible");
-
-            window.scrollTo({
-                top: window.innerHeight,
-                behavior: "smooth"
-            });
-
-        }, 2300);
-
-    }
-
-}
-
-
-/* ==========================================
-   FLOATING HEARTS / FLOWERS
-========================================== */
-
-function createParticles() {
-
-    const symbols = ["♡", "♥", "✿", "❀"];
+function createParticle(){
 
     const particle = document.createElement("div");
 
     particle.className = "particle";
 
     particle.innerHTML =
-        symbols[Math.floor(Math.random() * symbols.length)];
+        symbols[Math.floor(Math.random()*symbols.length)];
 
     particle.style.left =
-        Math.random() * 100 + "vw";
+        Math.random()*100 + "vw";
 
     particle.style.fontSize =
-        (14 + Math.random() * 22) + "px";
+        (12 + Math.random()*14) + "px";
 
     particle.style.animationDuration =
-        (5 + Math.random() * 5) + "s";
+        (8 + Math.random()*6) + "s";
 
     document.body.appendChild(particle);
 
-    setTimeout(() => {
+    setTimeout(()=>{
         particle.remove();
-    }, 10000);
+    },15000);
+}
+
+/* Not too many hearts */
+setInterval(createParticle,1800);
+
+
+/* =====================================================
+   HEART BURST
+===================================================== */
+
+function heartBurst(){
+
+    for(let i=0;i<12;i++){
+
+        const heart=document.createElement("div");
+
+        heart.className="burst";
+
+        heart.innerHTML =
+            Math.random()>.5 ? "♡" : "♥";
+
+        heart.style.setProperty(
+            "--x",
+            (Math.random()*500-250)+"px"
+        );
+
+        heart.style.setProperty(
+            "--y",
+            (Math.random()*500-250)+"px"
+        );
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },1500);
+    }
 }
 
 
-function createManyParticles() {
+/* =====================================================
+   ROUTER
+===================================================== */
 
-    for (let i = 0; i < 30; i++) {
+function go(page){
 
-        setTimeout(() => {
-            createParticles();
-        }, i * 70);
+    window.location.href =
+        window.location.pathname + "?page=" + page;
+
+}
+
+
+/* =====================================================
+   GET CURRENT PAGE
+===================================================== */
+
+const params =
+    new URLSearchParams(window.location.search);
+
+const current =
+    params.get("page") || "home";
+
+
+/* =====================================================
+   HOME
+===================================================== */
+
+function home(){
+
+    return `
+
+    <main class="page">
+
+        <div class="card">
+
+            <div class="eyebrow">
+                A little something for someone special
+            </div>
+
+            <h1>
+                To Miss <span>Hana Ahmed</span>
+            </h1>
+
+            <p>
+                I could have just sent you a normal anniversary
+                message...
+            </p>
+
+            <p>
+                But you know me.
+                I had to make things unnecessarily complicated. ♡
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="italic">
+                I wonder what this button does...
+                hmm...
+            </p>
+
+            <p class="small">
+                If it was me, I would have definitely pressed it.
+            </p>
+
+            <div class="buttons">
+
+                <button
+                    class="primary"
+                    id="startButton"
+                    onclick="firstClick()">
+                    Press me ♡
+                </button>
+
+            </div>
+
+            <div
+                class="answer"
+                id="homeAnswer">
+            </div>
+
+        </div>
+
+    </main>
+
+    `;
+
+}
+
+
+/* =====================================================
+   HOME BUTTON
+===================================================== */
+
+let homeClicks = 0;
+
+function firstClick(){
+
+    homeClicks++;
+
+    const answer =
+        document.getElementById("homeAnswer");
+
+    const button =
+        document.getElementById("startButton");
+
+    if(homeClicks === 1){
+
+        answer.innerHTML =
+            "Hmm... maybe you should press it again. 😭";
+
+        button.innerHTML =
+            "Okay... one more time ♡";
+
+        heartBurst();
+
+    }
+
+    else{
+
+        answer.innerHTML =
+            "Oh. You actually did it. I respect the commitment. 😭";
+
+        heartBurst();
+
+        setTimeout(()=>{
+
+            document
+                .getElementById("kissScreen")
+                .classList.add("show");
+
+        },400);
+
+        setTimeout(()=>{
+
+            go("story");
+
+        },1900);
 
     }
 
 }
 
 
-/* ==========================================
-   PUZZLE
-========================================== */
+/* =====================================================
+   STORY
+===================================================== */
 
-function wrongButton() {
+function story(){
 
-    const messages = [
+    return `
 
-        "Nope 😭",
+    <main class="page">
 
-        "Nice try.",
+        <div class="card">
 
-        "That button literally told you nothing.",
+            <div class="eyebrow">
+                Okay... you found the entrance.
+            </div>
 
-        "You really pressed that?",
+            <h2>
+                Now that I have your attention...
+            </h2>
 
-        "Hana... please 😭",
+            <p>
+                I could have written you one long paragraph
+                and called it a day.
+            </p>
 
-        "Wrong. But I respect the confidence."
+            <p>
+                But honestly...
+                where is the fun in that?
+            </p>
 
-    ];
+            <p>
+                So you're going to have to make your way
+                through this little thing I made for you.
+            </p>
 
-    document.getElementById("secretText").innerHTML =
-        messages[Math.floor(Math.random() * messages.length)];
+            <p>
+                There are a few questions.
+                A few traps.
+                And probably a few moments where you're going
+                to look at your screen and say,
+                <i>"Ayan, seriously?"</i>
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="italic">
+                First question...
+                why do you think I made this?
+            </p>
+
+            <div class="buttons">
+
+                <button onclick="storyAnswer('wrong1')">
+                    Because you're bored?
+                </button>
+
+                <button onclick="storyAnswer('wrong2')">
+                    Because you have too much free time?
+                </button>
+
+                <button onclick="storyAnswer('wrong3')">
+                    Because you're secretly dramatic?
+                </button>
+
+                <button onclick="storyAnswer('right')">
+                    Because you love me ♡
+                </button>
+
+            </div>
+
+            <div
+                class="answer"
+                id="storyAnswer">
+            </div>
+
+        </div>
+
+    </main>
+
+    `;
 
 }
 
+let storyAttempts = 0;
 
-function secretButton() {
+function storyAnswer(type){
 
-    document.getElementById("secretText").innerHTML =
-        "You found it. I knew you would. ♡";
+    storyAttempts++;
 
-    createManyParticles();
+    const answer =
+        document.getElementById("storyAnswer");
 
-}
+    if(storyAttempts < 3){
 
+        const messages = [
 
-/* ==========================================
-   TINY HIDDEN SECRET
-========================================== */
+            "That answer is suspiciously disrespectful. 😭",
 
-function tinySecret() {
+            "Okay... I'm not even going to argue with that one.",
 
-    alert(
-        "If you found this, congratulations. You officially clicked something you weren't supposed to. ♡"
-    );
+            "Wrong. But I'm giving you another chance because I love you.",
 
-}
+            "Hana. Please. You know the answer. 😭"
 
+        ];
 
-/* ==========================================
-   SCROLL REVEAL
-========================================== */
+        answer.innerHTML =
+            messages[Math.floor(Math.random()*messages.length)];
 
-const observer = new IntersectionObserver(
-    entries => {
+        heartBurst();
 
-        entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-                entry.target.classList.add("visible");
-
-            }
-
-        });
-
-    },
-    {
-        threshold: 0.15
     }
-);
 
-document.querySelectorAll(".reveal").forEach(element => {
-    observer.observe(element);
-});
+    else{
 
+        answer.innerHTML =
+            "Fine. You win. You found the answer. Come on, there's more. ♡";
 
-/* ==========================================
-   RANDOM BACKGROUND HEARTS
-========================================== */
+        heartBurst();
 
-setInterval(() => {
+        setTimeout(()=>{
+            go("littlethings");
+        },1200);
 
-    if (Math.random() > 0.45) {
-        createParticles();
     }
 
-}, 1800);
+}
+
+
+/* =====================================================
+   LITTLE THINGS
+===================================================== */
+
+function littlethings(){
+
+    return `
+
+    <main class="page">
+
+        <div class="card">
+
+            <div class="eyebrow">
+                The things I notice
+            </div>
+
+            <h2>
+                It's the little things.
+            </h2>
+
+            <p>
+                I don't think love is only about the huge,
+                movie-like moments.
+            </p>
+
+            <p>
+                Sometimes it's the smallest things that make
+                someone slowly become a huge part of your life.
+            </p>
+
+            <div class="little-grid">
+
+                <div class="little-box">
+
+                    <div class="emoji">💬</div>
+
+                    <h3>
+                        The way we talk
+                    </h3>
+
+                    <p>
+                        Even the completely random conversations,
+                        the nonsense, the teasing, and the moments
+                        where neither of us has anything important
+                        to say.
+                    </p>
+
+                </div>
+
+
+                <div class="little-box">
+
+                    <div class="emoji">😭</div>
+
+                    <h3>
+                        Your reactions
+                    </h3>
+
+                    <p>
+                        Somehow you can make the smallest thing
+                        ten times funnier just by the way you react.
+                    </p>
+
+                </div>
+
+
+                <div class="little-box">
+
+                    <div class="emoji">💋</div>
+
+                    <h3>
+                        The kissi thing
+                    </h3>
+
+                    <p>
+                        Yes, I'm mentioning it.
+                        The amount of kissi I ask for and the amount
+                        of kissi you give me is genuinely one of my
+                        favorite stupid little things.
+                    </p>
+
+                </div>
+
+
+                <div class="little-box">
+
+                    <div class="emoji">🤍</div>
+
+                    <h3>
+                        Your presence
+                    </h3>
+
+                    <p>
+                        Even when we're doing completely different
+                        things, somehow knowing you're there makes
+                        the day feel different.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="divider"></div>
+
+            <button onclick="revealSecret()">
+                There's probably something I'm forgetting...
+            </button>
+
+            <div
+                class="secret"
+                id="secret">
+
+                <div class="secret-inner">
+
+                    <p>
+                        Maybe that's actually the point.
+                    </p>
+
+                    <p>
+                        I couldn't possibly fit every little thing
+                        I love about you into one website.
+                    </p>
+
+                    <p class="italic">
+                        And yes, before you say it...
+                        you're welcome for the website. 😭
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="buttons">
+
+                <button
+                    class="primary"
+                    onclick="go('changed')">
+                    Okay, continue ♡
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    `;
+
+}
+
+
+function revealSecret(){
+
+    document
+        .getElementById("secret")
+        .classList.add("show");
+
+    heartBurst();
+
+}
+
+
+/* =====================================================
+   CHANGED ME
+===================================================== */
+
+function changed(){
+
+    return `
+
+    <main class="page">
+
+        <div class="card">
+
+            <div class="eyebrow">
+                Something I don't say enough
+            </div>
+
+            <h2>
+                You changed me.
+            </h2>
+
+            <p>
+                Not in some dramatic,
+                <i>"I became a completely different person"</i>
+                kind of way.
+            </p>
+
+            <p>
+                More like...
+                you slowly made me want to become a better version
+                of myself.
+            </p>
+
+            <p>
+                You made me think more about the way I speak,
+                the way I treat people, the way I handle things,
+                and the kind of person I actually want to become.
+            </p>
+
+            <p>
+                You made me realize that having someone you care
+                about can make you want to improve without them
+                even having to ask you to.
+            </p>
+
+            <div class="divider"></div>
+
+            <p>
+                And honestly, I like the person I'm becoming.
+            </p>
+
+            <p class="italic">
+                So if you ever wonder whether you've had an impact
+                on me...
+            </p>
+
+            <p>
+                You have.
+                More than you probably realize.
+            </p>
+
+            <div class="buttons">
+
+                <button
+                    class="primary"
+                    onclick="go('deen')">
+                    There's something else I want to tell you ♡
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    `;
+
+}
+
+
+/* =====================================================
+   DEEN
+===================================================== */
+
+function deen(){
+
+    return `
+
+    <main class="page">
+
+        <div class="card">
+
+            <div class="eyebrow">
+                Something deeper
+            </div>
+
+            <h2>
+                You made me look at my deen differently.
+            </h2>
+
+            <p>
+                One of the things I genuinely admire about you
+                is the way your deen is part of who you are.
+            </p>
+
+            <p>
+                And I'm not saying that because I want to make
+                this sound perfect or poetic.
+            </p>
+
+            <p>
+                I'm saying it because seeing that side of you
+                made me look at myself and think about the person
+                I want to be.
+            </p>
+
+            <p>
+                It made me want to become more intentional,
+                more patient, more disciplined, and better in
+                the way I carry myself.
+            </p>
+
+            <p>
+                You never had to force that out of me.
+                Sometimes just seeing something good in another
+                person makes you want to build more of it in
+                yourself.
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="italic">
+                And that is something about you that I will
+                always respect.
+            </p>
+
+            <div class="buttons">
+
+                <button
+                    class="primary"
+                    onclick="go('anniversary')">
+                    One last part ♡
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    `;
+
+}
+
+
+/* =====================================================
+   ANNIVERSARY
+===================================================== */
+
+function anniversary(){
+
+    return `
+
+    <main class="page">
+
+        <div class="card">
+
+            <div class="eyebrow">
+                Our little anniversary corner
+            </div>
+
+            <h2>
+                If I had to choose again...
+            </h2>
+
+            <p>
+                I think I'd still choose you.
+            </p>
+
+            <p>
+                Not because everything is always perfect.
+                Not because we never annoy each other.
+                And definitely not because you never make me
+                question why I love such a dramatic person. 😭
+            </p>
+
+            <p>
+                I'd choose you because somewhere along the way,
+                talking to you stopped feeling like just talking
+                to someone.
+            </p>
+
+            <p>
+                You became part of my everyday life.
+                Someone I look for.
+                Someone I think about.
+                Someone whose little messages can change the
+                entire mood of my day.
+            </p>
+
+            <div class="divider"></div>
+
+            <p>
+                And that's what I want to remember about us.
+            </p>
+
+            <p class="italic">
+                Not just one anniversary.
+                Not just one date.
+                But all the ordinary days that somehow became
+                special because you were in them.
+            </p>
+
+            <div class="buttons">
+
+                <button onclick="anniversaryChoice(1)">
+                    That's enough romance. 😭
+                </button>
+
+                <button onclick="anniversaryChoice(2)">
+                    Continue, I'm listening.
+                </button>
+
+                <button onclick="anniversaryChoice(3)">
+                    Give me the actual ending.
+                </button>
+
+            </div>
+
+            <div
+                class="answer"
+                id="anniversaryAnswer">
+            </div>
+
+        </div>
+
+    </main>
+
+    `;
+
+}
+
+let anniversaryClicks = 0;
+
+function anniversaryChoice(){
+
+    anniversaryClicks++;
+
+    const answer =
+        document.getElementById("anniversaryAnswer");
+
+    if(anniversaryClicks < 2){
+
+        answer.innerHTML =
+            "Nice try. You don't get to escape the feelings yet. 😭";
+
+        heartBurst();
+
+    }
+    else{
+
+        answer.innerHTML =
+            "Okay okay... you made it far enough. ♡";
+
+        heartBurst();
+
+        setTimeout(()=>{
+            go("final");
+        },1200);
+
+    }
+
+}
+
+
+/* =====================================================
+   FINAL PAGE
+===================================================== */
+
+function finalPage(){
+
+    return `
+
+    <main class="page">
+
+        <div class="card">
+
+            <div class="final-heart">
+                ♡
+            </div>
+
+            <div class="eyebrow">
+                For you, Hana
+            </div>
+
+            <h2>
+                Happy Anniversary.
+            </h2>
+
+            <p>
+                If you actually went through this entire thing,
+                first of all...
+            </p>
+
+            <p>
+                <b>thank you for putting up with me. 😭</b>
+            </p>
+
+            <div class="divider"></div>
+
+            <p>
+                I don't know exactly what every version of our
+                future is going to look like.
+            </p>
+
+            <p>
+                But I know that right now, I'm grateful for you.
+                Grateful for the conversations.
+                Grateful for the laughs.
+                Grateful for the stupid moments.
+                Grateful for the serious ones.
+                And grateful for the person you've helped me
+                become.
+            </p>
+
+            <p>
+                I hope we keep collecting those little moments
+                until one day we look back and realize just how
+                much of our story was built from them.
+            </p>
+
+            <p class="italic">
+                And yes...
+                I still expect my kissi. 💋
+            </p>
+
+            <div class="divider"></div>
+
+            <p>
+                Happy Anniversary, Hana.
+            </p>
+
+            <p>
+                I love you. ♡
+            </p>
+
+            <div class="buttons">
+
+                <button
+                    class="primary"
+                    onclick="finalSecret()">
+                    One last thing...
+                </button>
+
+            </div>
+
+            <div
+                class="secret"
+                id="finalSecret">
+
+                <div class="secret-inner">
+
+                    <p>
+                        If this whole website had only one answer,
+                        it would be this:
+                    </p>
+
+                    <h2>
+                        You. ♡
+                    </h2>
+
+                    <p>
+                        Always worth the extra effort.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    `;
+
+}
+
+
+function finalSecret(){
+
+    document
+        .getElementById("finalSecret")
+        .classList.add("show");
+
+    heartBurst();
+
+}
+
+
+/* =====================================================
+   RENDER PAGE
+===================================================== */
+
+function render(){
+
+    const app =
+        document.getElementById("app");
+
+    if(current === "home"){
+        app.innerHTML = home();
+    }
+
+    else if(current === "story"){
+        app.innerHTML = story();
+    }
+
+    else if(current === "littlethings"){
+        app.innerHTML = littlethings();
+    }
+
+    else if(current === "changed"){
+        app.innerHTML = changed();
+    }
+
+    else if(current === "deen"){
+        app.innerHTML = deen();
+    }
+
+    else if(current === "anniversary"){
+        app.innerHTML = anniversary();
+    }
+
+    else if(current === "final"){
+        app.innerHTML = finalPage();
+    }
+
+    else{
+        app.innerHTML = home();
+    }
+
+}
+
+
+/* START */
+
+render();
 
 </script>
 
 </body>
-  </html>
+</html>
